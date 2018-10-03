@@ -3,9 +3,11 @@ import VueRouter from 'vue-router'
 import { firebase } from '@/services/firebase'
 
 // Load components
-import LoginComponent from '@/components/Login'
-import DashboardComponent from '@/components/Dashboard'
+import LoginView from '@/views/Login'
+import DashboardView from '@/views/Dashboard'
 import BestellenView from '@/views/Bestellen'
+import AccountView from '@/views/Account'
+import BestellingenView from '@/views/Bestellingen'
 
 Vue.use(VueRouter)
 
@@ -17,12 +19,12 @@ let routes = [
     {
         path: '/login',
         name: 'login',
-        component: LoginComponent
+        component: LoginView
     },
     {
         path: '/dashboard',
         name: 'dashboard',
-        component: DashboardComponent,
+        component: DashboardView,
         meta: {
             requiresAuth: true
         }
@@ -34,6 +36,22 @@ let routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path: '/account',
+        name: 'account',
+        component: AccountView,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/account/bestellingen',
+        name: 'bestellingen',
+        component: BestellingenView,
+        meta: {
+            requiresAuth: true
+        }
     }
 ]
 
@@ -42,15 +60,6 @@ let router = new VueRouter({
     linkActiveClass: 'is-active',
     mode: 'history'
 })
-
-// router.beforeEach((to, from, next) => {
-//     let currentUser = firebase.auth().currentUser
-//     let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-
-//     if(requiresAuth && !currentUser) next ('login')
-//     else if (!requiresAuth && currentUser) next ('dashboard')
-//     else next()
-// })
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
