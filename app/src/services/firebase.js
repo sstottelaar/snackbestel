@@ -3,7 +3,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 let config = {
-    apiKey: "AIzaSyAm_ujSRkXKqEb0RZbJS3N-F62df2BrG5I",
+    apiKey: process.env.VUE_APP_GOOGLE_API_KEY,
     authDomain: "snackbestel-4c156.firebaseapp.com",
     databaseURL: "https://snackbestel-4c156.firebaseio.com",
     projectId: "snackbestel-4c156",

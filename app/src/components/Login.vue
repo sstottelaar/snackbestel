@@ -92,11 +92,11 @@ export default {
                             this.$store.dispatch('loginUser', firebase.auth().currentUser)
                             this.isLoading = false
                         })
-                        .catch((err) => {
+                        .catch(() => {
                             // If user is not found in DB log error
                             // TODO: Make new record in DB with 0 credit
-                            console.log('Error getting user')
                             this.$store.dispatch('loginUser', firebase.auth().currentUser)
+                            this.isLoading = false
                         })
 
                     // Redirect user
@@ -109,7 +109,8 @@ export default {
                         duration: 1000
                     })
                 })
-                .catch((error) => {
+                .catch((error) => {                    
+                    this.isLoading = false
                     this.error.active =  true
                     this.error.message = error.message
                 })

@@ -5,7 +5,7 @@ import { firebase } from '@/services/firebase'
 // Load components
 import LoginComponent from '@/components/Login'
 import DashboardComponent from '@/components/Dashboard'
-import BestellenComponent from '@/components/Bestellen'
+import BestellenView from '@/views/Bestellen'
 
 Vue.use(VueRouter)
 
@@ -30,7 +30,7 @@ let routes = [
     {
         path: '/bestellen',
         name: 'bestellen',
-        component: BestellenComponent,
+        component: BestellenView,
         meta: {
             requiresAuth: true
         }
