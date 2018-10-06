@@ -16,9 +16,9 @@ let store = new Vuex.Store({
             id: '',
             email: '',
             credit: '',
-            loggedIn: false
-        },
-        cart: []
+            loggedIn: false,
+            role: ''
+        }
     },
     actions: {
         loginUser({commit}, payload) {
@@ -40,6 +40,7 @@ let store = new Vuex.Store({
             state.user.id = payload.uid
             state.user.credit = payload.credit
             state.user.loggedIn = true
+            state.user.role = payload.role
         },
         clearUser: (state) => {
             state.user.email = ''

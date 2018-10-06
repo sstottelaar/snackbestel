@@ -8,6 +8,8 @@ import DashboardView from '@/views/Dashboard'
 import BestellenView from '@/views/Bestellen'
 import AccountView from '@/views/Account'
 import BestellingenView from '@/views/Bestellingen'
+import BeheerView from '@/views/Beheer'
+import ProductenView from '@/views/Producten'
 
 Vue.use(VueRouter)
 
@@ -49,6 +51,22 @@ let routes = [
         path: '/account/bestellingen',
         name: 'bestellingen',
         component: BestellingenView,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/beheer',
+        name: 'beheer',
+        component: BeheerView,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/producten',
+        name: 'producten',
+        component: ProductenView,
         meta: {
             requiresAuth: true
         }

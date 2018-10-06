@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
+// Define config
 let config = {
     apiKey: process.env.VUE_APP_GOOGLE_API_KEY,
     authDomain: "snackbestel-4c156.firebaseapp.com",
@@ -11,10 +12,13 @@ let config = {
     messagingSenderId: "37498768046"
 }
 
+// Initialize Firebase
 firebase.initializeApp(config)
 
+// Create db reference
 const db = firebase.firestore()
 
+// Use settings
 db.settings({
     timestampsInSnapshots: true
 })

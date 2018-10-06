@@ -32,18 +32,13 @@
 
             <hr>
 
-            <div class="columns">
+            <div class="columns is-multiline">
                 <b-loading :is-full-page="isFullPage" :active.sync="isLoading" :can-cancel="true"></b-loading>
-                <div v-for="(snack, key) in snacks" :key="key" class="column">
+                <div v-for="(snack, key) in snacks" :key="key" class="column is-3">
                     <div class="card">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img v-bind:src="snack.imgUrl" alt="">
-                            </figure>
-                        </div>
                         <div class="card-content">
                             <div class="content">
-                                <h2 class="is-size-5">{{ snack.description }}</h2>
+                                <h2 class="is-size-6">{{ snack.description }}</h2>
                                 <p>Prijs: {{ snack.price | toCurrency }}</p>
                             </div>
                         </div>
@@ -150,7 +145,7 @@ export default {
 
             // Create refs
             let userRef = db.collection("users").doc(firebase.auth().currentUser.uid)
-            let newOrderRef = userRef.collection("orders").doc()
+            let newOrderRef = db.collection("orders").doc()
 
             // Update credit
             let totalSum = 0
@@ -163,6 +158,7 @@ export default {
 
             // Write order to user
             batch.set(newOrderRef, {
+                uid: firebase.auth().currentUser.uid,
                 order: payload,
                 orderDate: Date.now()
             })
