@@ -42,15 +42,16 @@ export default {
 
             // Get monday of current week
             let dt = new Date()
-            while(dt.getDate() != 1) {
-                dt.setDate(dt.getDate() - 1)
+
+            while(dt.getDay() != 1) {
+                dt.getDay(dt.getDay() - 1)
             }
 
-            // Convert date to timestamp
-            dt = dt.getTime()
+            // Date on monday 08:30
+            let orderDateStart = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), 8, 30)
 
             // Get orders from Firestore
-            db.collection("orders").where("orderDate", ">=", dt)
+            db.collection("orders").where("orderDate", ">", orderDateStart.getTime())
                 .onSnapshot((querySnapshot) => {
                     var tempOrders = []
                     querySnapshot.forEach((doc) => {

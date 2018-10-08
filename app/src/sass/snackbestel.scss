@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Product+Sans:400,700');
+
+// Change variables
+$custom-blue: #0069ff;
+$custom-green: #97CC04;
+
+$primary: $custom-blue;
+$success: $custom-green;
+$family-sans-serif: "Product Sans", sans-serif;
+
+// Import Bulma and Buefy styles
+@import "~bulma/sass/utilities/_all";
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

@@ -71,7 +71,10 @@
                         </footer>
                     </div>
                 </div>
-            </div>           
+
+                <my-profile :user="this.getCurrentUser"></my-profile>  
+
+            </div> 
             
         </div>
     </div>
@@ -82,11 +85,13 @@ import { mapGetters } from 'vuex'
 import filters from '@/services/filters'
 import { firebase } from '@/services/firebase'
 import PasswordChangeForm from '@/components/PasswordChangeForm'
+import MyProfile from '@/components/MyProfile'
 
 export default {
     name: 'account',
     components: {
-        PasswordChangeForm
+        PasswordChangeForm,
+        MyProfile
     },
     data() {
         return {

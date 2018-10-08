@@ -84,7 +84,10 @@ export default {
                             if(doc.exists) {
                                 let firebaseData = doc.data()
                                 firebase.auth().currentUser.credit = firebaseData.credit
+                                firebase.auth().currentUser.name = firebaseData.name
+                                firebase.auth().currentUser.role = firebaseData.role
                             } else {
+                                // TODO: create default user and write it to Firebase
                                 console.log('User does not exist')
                             }
                         

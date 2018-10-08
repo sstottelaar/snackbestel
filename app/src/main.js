@@ -4,7 +4,6 @@ import { firebase } from '@/services/firebase'
 import router from '@/router/router'
 import store from '@/store/store'
 import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
 
 // Use libraries
 Vue.use(Buefy)

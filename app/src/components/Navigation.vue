@@ -21,7 +21,7 @@
                     <span class="navbar-item has-text-grey-light">{{ getCurrentUser.email }}</span>
 
                     <hr class="navbar-divider">
-                       
+
                     <router-link v-if="userLoggedIn" to="/beheer" class="navbar-item">Beheer</router-link>
                     <router-link v-if="userLoggedIn" to="/producten" class="navbar-item">Producten</router-link>
                     <a @click="doSignOut" v-if="userLoggedIn" class="navbar-item">Uitloggen</a>
@@ -64,10 +64,6 @@ export default {
 <style lang="scss" scoped>
 .navbar-menu{
     padding: 0;
-}
-
-.navbar-item{
-    padding: .75rem 1.25rem;
 }
 </style>
 

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { firebase, db, getDataRealtime } from '@/services/firebase'
+import { db } from '@/services/firebase'
 import filters from '@/services/filters'
 import randomId from 'random-id'
 import ProductEditForm from '@/components/ProductEditForm'
@@ -100,7 +100,7 @@ export default {
                                 duration: 1000
                             })
                         })
-                        .catch((err) => {
+                        .catch(() => {
                              this.$toast.open({
                                 message: 'Product is verwijderd',
                                 type: 'is-success',
