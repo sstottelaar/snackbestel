@@ -13,7 +13,7 @@
                     <div class="card">
                         <header class="card-header">
                             <span class="card-header-title">
-                                Saldo
+                               Mijn Saldo
                             </span>
                         </header>
                         <div class="card-content">

@@ -9,9 +9,9 @@
                 <b-input placeholder="Snack prijs" type="number" min="0" max="50" v-model="tempSnack.price"></b-input>
             </b-field>
         </section>
-        <footer class="modal-card-foot">            
+        <footer class="modal-card-foot">
+            <button @click="$parent.close()" class="button is-fullwidth is-outlined">Annuleren</button>
             <button @click="saveSnack(tempSnack)" class="button is-primary is-fullwidth">Opslaan</button>
-            <button @click="$parent.close()" class="button is-danger is-fullwidth is-outlined">Annuleren</button>
         </footer>
 
     </div>

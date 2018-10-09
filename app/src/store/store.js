@@ -37,6 +37,7 @@ let store = new Vuex.Store({
     },
     mutations: {
         registerUser(state, payload) {
+            state.user.details = payload.details
             state.user.email = payload.email
             state.user.name = payload.name
             state.user.id = payload.uid
@@ -45,11 +46,7 @@ let store = new Vuex.Store({
             state.user.role = payload.role
         },
         clearUser: (state) => {
-            // state.user.email = ''
-            // state.user.id = ''
-
             // Clear all fields
-
             state.user.loggedIn = false
         },
         setCredit: (state, payload) => {

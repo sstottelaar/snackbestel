@@ -16,18 +16,12 @@
 
                     <!-- Login input -->
                     <div class="form-container">
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control">
-                                <input v-model="email" type="email" name="email" id="email" class="input" placeholder="Werk email" autocapitalize="off" required>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label">Wachtwoord</label>
-                            <div class="control">
-                                <input v-model="password" @keyup.enter="doLogin" type="password" name="wachtwoord" id="password" class="input" placeholder="Wachtwoord" required>
-                            </div>
-                        </div>
+                        <b-field label="Email">
+                            <b-input v-model="email" type="email" placeholder="Werk email" autocapitalize="off" required></b-input>
+                        </b-field>
+                        <b-field label="Wachtwoord">
+                            <b-input v-model="password" @keyup.enter="doLogin" type="password" placeholder="Wachtwoord" password-reveal required></b-input>
+                        </b-field>
                         <div class="field">
                             <div class="control">
                                 <button @click.prevent="doLogin" class="button is-link">Inloggen</button>
@@ -83,6 +77,7 @@ export default {
                             // If user records exists, proces it
                             if(doc.exists) {
                                 let firebaseData = doc.data()
+                                firebase.auth().currentUser.details = firebaseData
                                 firebase.auth().currentUser.credit = firebaseData.credit
                                 firebase.auth().currentUser.name = firebaseData.name
                                 firebase.auth().currentUser.role = firebaseData.role

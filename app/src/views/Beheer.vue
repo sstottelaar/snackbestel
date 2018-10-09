@@ -26,6 +26,7 @@
 
 <script>
 import { firebase, db } from '@/services/firebase'
+import moment from 'moment'
 
 export default {
     name: 'beheer',
@@ -41,17 +42,17 @@ export default {
             this.isLoading = true
 
             // Get monday of current week
-            let dt = new Date()
-
-            while(dt.getDay() != 1) {
-                dt.getDay(dt.getDay() - 1)
+            function getMonday(date) {
+                let day = date.getDay() || 7;  
+                if(day !== 1) 
+                    date.setHours(-24 * (day - 1)); 
+                return date;
             }
 
-            // Date on monday 08:30
-            let orderDateStart = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate(), 8, 30)
+            let dt = getMonday(new Date()).getTime();
 
             // Get orders from Firestore
-            db.collection("orders").where("orderDate", ">", orderDateStart.getTime())
+            db.collection("orders").where("orderDate", ">=", dt)
                 .onSnapshot((querySnapshot) => {
                     var tempOrders = []
                     querySnapshot.forEach((doc) => {
@@ -64,7 +65,8 @@ export default {
             
                     // Disable loading
                     this.isLoading = false    
-                })    
+                })
+            // this.isLoading = false  
         }
     },
     computed: {

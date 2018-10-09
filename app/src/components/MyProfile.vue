@@ -32,15 +32,6 @@ export default {
 .userprofile-list {
     list-style: none;
     padding: 0;
-
-    li {
-        padding: 10px 0;
-        border-bottom: 1px solid whitesmoke;
-        
-        &:last-child {
-            border-bottom: 0;
-            padding: 10px 0 0 0;
-        }
-    }
+    line-height: 1.8;
 }
 </style>
