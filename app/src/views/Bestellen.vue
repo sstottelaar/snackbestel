@@ -82,7 +82,7 @@ export default {
         },
         addToOrder(payload) {
             // Check if there is enough credit
-            if(this.getCurrentUser.credit > payload.price) {                
+            if(this.getCurrentUser.credit >= (payload.price + this.totalOrderAmount)) {                
                 // Add order to order object with unique id so we can delete it
                 this.order.push({
                     description: payload.description,
@@ -176,7 +176,7 @@ export default {
         ...mapGetters(['getCurrentUser']),
         totalOrderAmount() {
             let totalAmount = 0
-            this.order.forEach(item => totalAmount += item.price)
+            this.order.forEach(item => totalAmount += parseInt(item.price))
             return totalAmount
         }
     },

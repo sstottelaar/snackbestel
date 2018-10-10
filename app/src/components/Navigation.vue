@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar is-light is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item has-text-weight-bold" href="/dashboard">
+            <router-link class="navbar-item has-text-weight-bold" to="/dashboard">
                 Snackbestel.nl
-            </a>
+            </router-link>
             <a @click="menuActive = !menuActive" role="button" class="navbar-burger" v-bind:class="{ 'is-active':  menuActive }" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -18,10 +18,6 @@
                 <router-link v-if="userLoggedIn" to="/account" class="navbar-link">Account</router-link>
 
                 <div class="navbar-dropdown is-right">
-                    <span class="navbar-item has-text-grey-light">{{ getCurrentUser.email }}</span>
-
-                    <hr class="navbar-divider">
-
                     <router-link v-if="userLoggedIn" to="/beheer" class="navbar-item">Beheer</router-link>
                     <router-link v-if="userLoggedIn" to="/producten" class="navbar-item">Producten</router-link>
                     <a @click="doSignOut" v-if="userLoggedIn" class="navbar-item">Uitloggen</a>
@@ -62,8 +58,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar-menu{
-    padding: 0;
+.navbar {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.06);
+
+    .navbar-brand {
+        font-size: 16px;
+        font-family: "Product Sans", non-serif;
+        color: rgba(0, 105, 255, 1);
+    }
 }
 </style>
 

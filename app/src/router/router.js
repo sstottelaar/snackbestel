@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { firebase } from '@/services/firebase'
+import store from '@/store/store'
+
+// Init current user
+let currentUser = store.state.user
 
 // Load components
 import LoginView from '@/views/Login'
@@ -60,7 +64,8 @@ let routes = [
         name: 'beheer',
         component: BeheerView,
         meta: {
-            requiresAuth: true
+            requiresAuth: true,
+            moderatorOnly: true
         }
     },
     {
@@ -80,7 +85,20 @@ let router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
+
+    // Check if user is logged in and is a moderator
+    if (to.matched.some(record => record.meta.moderatorOnly)) {
+        // Check if user is logged in
+        let user = firebase.auth().currentUser
+        let userRole = currentUser.role
+        
+        if(user && userRole == "moderator"){
+            next()
+        } else {
+            next('login')
+        }
+
+    } else if(to.matched.some(record => record.meta.requiresAuth)) {
         // Check if user is logged in
         let user = firebase.auth().currentUser
         

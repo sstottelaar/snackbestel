@@ -20,7 +20,7 @@
                             <b-input v-model="email" type="email" placeholder="Werk email" autocapitalize="off" required></b-input>
                         </b-field>
                         <b-field label="Wachtwoord">
-                            <b-input v-model="password" @keyup.enter="doLogin" type="password" placeholder="Wachtwoord" password-reveal required></b-input>
+                            <b-input v-model="password" @keyup.native.enter="doLogin" type="password" placeholder="Wachtwoord" password-reveal required></b-input>
                         </b-field>
                         <div class="field">
                             <div class="control">
@@ -73,7 +73,6 @@ export default {
                     // Get userdata from Firebase database
                     db.collection("users").doc(firebase.auth().currentUser.uid).get()
                         .then((doc) => {
-
                             // If user records exists, proces it
                             if(doc.exists) {
                                 let firebaseData = doc.data()
@@ -84,6 +83,12 @@ export default {
                             } else {
                                 // TODO: create default user and write it to Firebase
                                 console.log('User does not exist')
+                                // Generate new user ref
+                                db.collection("users").doc(firebase.auth().currentUser.uid).set({
+                                    credit: 0,
+                                    name: '',
+                                    role: 'user'
+                                })
                             }
                         
                             // On succesful login and getting data, write it to store
@@ -92,7 +97,6 @@ export default {
                         })
                         .catch(() => {
                             // If user is not found in DB log error
-                            // TODO: Make new record in DB with 0 credit
                             this.$store.dispatch('loginUser', firebase.auth().currentUser)
                             this.isLoading = false
                         })

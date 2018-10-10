@@ -58,7 +58,6 @@ export default {
     methods: {
         initData() {
             this.isLoading = true
-
             // Get products from Firestore
             db.collection("snacks")
                 .onSnapshot((querySnapshot) => {
@@ -115,12 +114,12 @@ export default {
             if(snack.docId) {
                 db.collection("snacks").doc(snack.docId).update({
                     description: snack.description,
-                    price: snack.price
+                    price: parseInt(snack.price)
                 })
             } else {
                 db.collection("snacks").add({
                     description: snack.description,
-                    price: snack.price,
+                    price: parseInt(snack.price),
                     id: randomId()
                 })
             }
@@ -147,7 +146,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mb-10 {
-    margin-bottom: 10px;
-}
 </style>
