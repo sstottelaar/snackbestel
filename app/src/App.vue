@@ -21,5 +21,4 @@ export default {
 
 <style lang="scss">
 @import "@/sass/snackbestel.scss";
-
 </style>

@@ -12,14 +12,15 @@
         </div>
         <div class="navbar-menu navbar-end" v-bind:class="{ 'is-active':  menuActive }">
             <router-link v-if="!userLoggedIn" to="/login" class="navbar-item">Login</router-link>
-            <router-link v-if="userLoggedIn" to="/bestellen" class="navbar-item">Bestellen</router-link>                     
+            <router-link v-if="userLoggedIn" to="/bestellen" class="navbar-item">Bestellen</router-link>                    
 
             <div v-if="userLoggedIn" class="navbar-item has-dropdown is-hoverable">
                 <router-link v-if="userLoggedIn" to="/account" class="navbar-link">Account</router-link>
 
                 <div class="navbar-dropdown is-right">
                     <router-link v-if="userLoggedIn" to="/beheer" class="navbar-item">Beheer</router-link>
-                    <router-link v-if="userLoggedIn" to="/producten" class="navbar-item">Producten</router-link>
+                    <router-link v-if="userLoggedIn" to="/producten" class="navbar-item">Producten</router-link>                     
+                    <router-link v-if="userLoggedIn" to="/gebruikers" class="navbar-item">Gebruikers</router-link> 
                     <a @click="doSignOut" v-if="userLoggedIn" class="navbar-item">Uitloggen</a>
                 </div>
             </div>
@@ -62,7 +63,7 @@ export default {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.06);
 
     .navbar-brand {
-        font-size: 16px;
+        font-size: 18px;
         font-family: "Product Sans", non-serif;
         color: rgba(0, 105, 255, 1);
     }

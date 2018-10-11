@@ -14,6 +14,7 @@ import AccountView from '@/views/Account'
 import BestellingenView from '@/views/Bestellingen'
 import BeheerView from '@/views/Beheer'
 import ProductenView from '@/views/Producten'
+import UsersView from '@/views/Users'
 
 Vue.use(VueRouter)
 
@@ -74,6 +75,15 @@ let routes = [
         component: ProductenView,
         meta: {
             requiresAuth: true
+        }
+    },
+    {
+        path: '/gebruikers',
+        name: 'gebruikers',
+        component: UsersView,
+        meta: {
+            requiresAuth: true,
+            moderatorOnly: true
         }
     }
 ]
