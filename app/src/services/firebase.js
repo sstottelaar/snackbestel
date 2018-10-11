@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/functions'
 
 // Define config
 let config = {
@@ -18,9 +19,12 @@ firebase.initializeApp(config)
 // Create db reference
 const db = firebase.firestore()
 
+// Create functions reference
+const functions = firebase.functions()
+
 // Use settings
 db.settings({
     timestampsInSnapshots: true
 })
 
-export { firebase, db }
+export { firebase, db, functions }

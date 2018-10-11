@@ -3,6 +3,7 @@
 %RESOURCE_DIR%
 app/dist
 app/node_modules
+functions/services
 
 # local env files
 app/.env.local
